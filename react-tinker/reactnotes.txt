@@ -1,0 +1,61 @@
+Copy and pasting cheat-sheet style:
+
+index.js: Contains the starting point of our application.
+index.css: Stores the base styling for our application.
+App.js: Contains the definition of the main component of the sample application.
+App.css: Contains the styling of the App component.
+logo.svg: This is the React logo.
+App.test.js: Stores the basic unit test involving the App component.
+serviceWorker.js: Contains the code to register the service worker in order to allow offline behavior, as per the PWA requirements.
+
+The CSS import is not a React feature, and it is not required by React.
+It is a convenience provided by the development environment, built by create-react-app.
+In particular, this feature is provided by webpack, one of the most frequently used bundlers and module loaders.
+You should take this aspect into account if you want to migrate the application into a development environment not based on webpack.
+
+It is very important when returning a JSX expression to start it in the same line of the return statement, as in the previous example.
+If you want to start the JSX expression on a new line, you need to enclose it in round brackets and put the left bracket on the same line as the return statement, as in the following example:
+
+return (
+  <div><h2>Catalog</h2></div>
+);
+
+JSX -> HTML
+All HTML tags are in lowercase.
+The class attribute is written as className in JSX.
+The for attribute is written as htmlFor in JSX.
+Wrap in clean div?
+
+Tags corresponding to components must follow the case used in the class definition,
+and by convention, component class names use Pascal case, even though it is not required by React.
+
+absolute pathing by making jsconfig.json and adding:{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}
+will allow cleaner import statements
+import Button from 'components/Button';
+
+You can avoid linter complaints (from not seeing definition of global variables)
+by reading the global variable explicitly from the window object, for example:
+const $ = window.$;
+
+Component Definitions:
+function MyComponent() {
+    return(
+      ..
+    )
+}
+
+vs.
+
+const MyComponent = () => {
+    return(
+      ..
+    )
+}
+
+They do effectively the same thing, but the linter will yell at you if you use the const declaration below the actual 
+component use in the same file. If you keep components in separate files/directories, they are basically the same? (need to double check this)
